@@ -3,7 +3,7 @@
 Warning: this is a demo project - not production ready. 
 
 Follow along to deploy 2 environments with ArgoCD and Tyk Self-Managed.
-You will need a license for Tyk Self-Managed. You can register for a free trial: https://tyk.io/sign-up/#self 
+You will need a license for Tyk Self-Managed. You can register for a free trial: https://tyk.io/sign-up/#self. 
 
 ## Create local Kubernetes cluster for staging and production
 
