@@ -58,7 +58,7 @@ argocd admin initial-password -n argocd
 
 * Argo admin UI: https://localhost:9080/applications (user: admin)
 
-![Argo admin UI (empty)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/master/img/argo_staging_empty.png?raw=true)
+![Argo admin UI (empty)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/main/img/argo_staging_empty.png)
 
 
 
