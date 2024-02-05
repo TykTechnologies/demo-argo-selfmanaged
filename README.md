@@ -66,6 +66,15 @@ argocd admin initial-password -n argocd
 
 ## Create ArgoCD applications
 
+Replace ```YOUR-LICENSE-GOES-HERE``` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self. 
+
+```
+cd ./staging/argo-applications-tyk
+kubectl apply -f tyk-config-secrets.yml
+kubectl apply -f tyk-redis.yml
+kubectl apply -f tyk-postgres.yml
+kubectl apply -f tyk-stack.yml
+```
 
 
 ## Try it out
