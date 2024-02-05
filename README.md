@@ -66,7 +66,8 @@ argocd admin initial-password -n argocd
 
 ## Create ArgoCD applications
 
-Replace ```YOUR-LICENSE-GOES-HERE``` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self. 
+* Clone this repository locally
+* Replace ```YOUR-LICENSE-GOES-HERE``` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self. 
 
 ```
 cd ./staging/argo-applications-tyk
@@ -79,17 +80,21 @@ kubectl apply -f tyk-stack.yml
 
 ## Try it out
 
-### Tyk
-
-Forward the port 8080:
+Port forward Tyk Gateway: 
 
 ```
-kubectl port-forward svc/gateway-svc-tyk-gateway-application -n tyk 8080:8080
+kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
 ```
 
-* Tyk health endpoint: http://localhost:8080/hello
-* go-httpbin: http://localhost:8080/httpbin/get
+Check that it is healthy by sending a request to the health endpoint: http://localhost:8080/hello.
 
+Port forward Tyk Dashboard:
+
+```
+kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
+```
+
+Log into Tyk Dashboard: http://localhost:3000.
 
 
 ## Deploy production
