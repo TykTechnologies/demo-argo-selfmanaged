@@ -5,6 +5,9 @@ Warning: this is a demo project - not production ready.
 Follow along to deploy 2 environments with ArgoCD and Tyk Self-Managed.
 You will need a license for Tyk Self-Managed. You can register for a free trial: https://tyk.io/sign-up/#self. 
 
+This demo is based on the blog post: 
+* [Deploying an API gateway to Kubernetes with ArgoCD](https://tyk.io/blog/deploying-api-gateway-kubernetes-with-argocd/)
+
 ## Create local Kubernetes cluster for staging and production
 
 In this demo, we will assume 2 environments (staging and prod) running in minikube:
