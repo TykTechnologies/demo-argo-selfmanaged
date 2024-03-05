@@ -104,6 +104,16 @@ kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
 
 Log into Tyk Dashboard: http://localhost:3000 (default@example.com / 123456 if you haven't changed the default from the Helm chart).
 
+### Deploy Tyk Operator 
+
+```
+cd ..
+cd ./argo-applications-tyk-operator
+kubectl apply -f application-cert-manager.yaml
+kubectl apply -f tyk-operator-secret.yaml
+kubectl apply -f tyk-postgres.yml
+```
+
 
 ## Deploy production
 
