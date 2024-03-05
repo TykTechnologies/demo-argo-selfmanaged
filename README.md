@@ -106,13 +106,13 @@ Log into Tyk Dashboard: http://localhost:3000 (default@example.com / 123456 if y
 
 ### Deploy Tyk Operator 
 
+Configure an Argo CD application to deploy Tyk Opertor and Cert Manager (pre-requisite):
+
 ```
-cd ..
-cd ./argo-applications-tyk-operator
 kubectl apply -f application-cert-manager.yaml
-kubectl apply -f tyk-operator-secret.yaml
-kubectl apply -f tyk-postgres.yml
+kubectl apply -f application-tyk-operator.yaml
 ```
+
 
 
 ## Deploy production
