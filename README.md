@@ -106,13 +106,26 @@ Log into Tyk Dashboard: http://localhost:3000 (default@example.com / 123456 if y
 
 ### Deploy Tyk Operator 
 
-Configure an Argo CD application to deploy Tyk Opertor and Cert Manager (pre-requisite):
+Configure an Argo CD application to deploy Tyk Opertor and Cert Manager. Tyk Operator enables the management of Tyk API Gateway within Kubernetes, and Cert Manager handles SSL/TLS for secure communication. 
 
 ```
 kubectl apply -f application-cert-manager.yaml
 kubectl apply -f application-tyk-operator.yaml
 ```
 
+### Sync API Definitions
+
+API Definitions are going to be stored into the direction ./api-definitions. Let's create an Argo app to synced the API Definitions automatically from GitHub:
+
+```
+kubectl apply -f application-api-definitions.yaml
+```
+
+### Try it out
+
+```
+
+```
 
 
 ## Deploy production
