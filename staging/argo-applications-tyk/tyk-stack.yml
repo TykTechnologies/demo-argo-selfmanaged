@@ -25,6 +25,10 @@ spec:
           value: postgresURL
         - name: global.secrets.APISecret
           value: BananaSplit42
+        - name: global.components.bootstrap
+          value: 'true'
+        - name: tyk-bootstrap.bootstrap.dashboard
+          value: 'true'
     chart: tyk-stack
   destination:
     server: 'https://kubernetes.default.svc'
