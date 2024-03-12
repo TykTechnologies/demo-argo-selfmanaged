@@ -23,6 +23,14 @@ spec:
           value: tyk-redispgsql-secrets
         - name: global.postgres.connectionStringSecret.keyName
           value: postgresURL
+        - name: global.secrets.APISecret
+          value: BananaSplit42
+        - name: global.components.bootstrap
+          value: 'true'
+        - name: tyk-bootstrap.bootstrap.dashboard
+          value: 'true'
+        - name: tyk-bootstrap.bootstrap.portal
+          value: 'false'
     chart: tyk-stack
   destination:
     server: 'https://kubernetes.default.svc'
