@@ -1,12 +1,13 @@
 # Demo: deploying Tyk self-managed platform with ArgoCD
 
-Warning: this is a demo project - not production ready. 
+Warning: this is a demo project - it is not production ready.
 
 Follow along to deploy 2 environments with ArgoCD and Tyk Self-Managed.
-You will need a license for Tyk Self-Managed. You can register for a free trial: https://tyk.io/sign-up/#self. 
+You will need a license for Tyk Self-Managed. You can register for a free trial: https://tyk.io/sign-up/#self.
 
-This demo is based on the blog post: 
-* [Deploying an API gateway to Kubernetes with ArgoCD](https://tyk.io/blog/deploying-api-gateway-kubernetes-with-argocd/)
+This demo is based on the blog post:
+
+- [Deploying an API gateway to Kubernetes with ArgoCD](https://tyk.io/blog/deploying-api-gateway-kubernetes-with-argocd/)
 
 ## Create local Kubernetes cluster for staging and production
 
@@ -40,7 +41,7 @@ kubectx staging
 
 ### Install ArgoCD
 
-Here are the commands needed to Install ArgoCD on your cluster. Refer to [ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) for more details. 
+Here are the commands needed to Install ArgoCD on your cluster. Refer to [ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) for more details.
 
 ```
 kubectl create namespace argocd
@@ -61,15 +62,15 @@ kubectl port-forward svc/argocd-server -n argocd 9080:443
 argocd admin initial-password -n argocd
 ```
 
-* Argo admin UI: https://localhost:9080/applications (user: admin)
+- Argo admin UI: https://localhost:9080/applications (user: admin)
 
 ![Argo admin UI (empty)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/main/img/argo_staging_empty.png)
 
 ### Create ArgoCD applications and deploy Tyk Self-Managed
 
-* Clone this repository locally
-* Replace ```YOUR-LICENSE-GOES-HERE``` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self. 
-* Start by deploying the dependencies (configuration, Redis, PostgreSQL):
+- Clone this repository locally
+- Replace `YOUR-LICENSE-GOES-HERE` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self.
+- Start by deploying the dependencies (configuration, Redis, PostgreSQL):
 
 ```
 cd ./staging/argo-applications-tyk
@@ -88,7 +89,7 @@ kubectl apply -f tyk-stack.yml
 
 ### Try it out
 
-Port forward Tyk Gateway: 
+Port forward Tyk Gateway:
 
 ```
 kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
@@ -104,9 +105,9 @@ kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
 
 Log into Tyk Dashboard: http://localhost:3000 (default@example.com / 123456 if you haven't changed the default from the Helm chart).
 
-### Deploy Tyk Operator 
+### Deploy Tyk Operator
 
-Configure an Argo CD application to deploy Tyk Operator and Cert Manager. Tyk Operator enables the management of Tyk API Gateway within Kubernetes, and Cert Manager handles SSL/TLS for secure communication. 
+Configure an Argo CD application to deploy Tyk Operator and Cert Manager. Tyk Operator enables the management of Tyk API Gateway within Kubernetes, and Cert Manager handles SSL/TLS for secure communication.
 
 ```
 kubectl apply -f application-cert-manager.yaml
@@ -127,7 +128,6 @@ kubectl apply -f application-api-definitions.yaml
 
 ```
 
-
 ## Deploy production
 
 ### Switch to the staging cluster
@@ -138,7 +138,7 @@ kubectx production
 
 ### Install ArgoCD
 
-Here are the commands needed to Install ArgoCD on your cluster. Refer to [ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) for more details. 
+Here are the commands needed to Install ArgoCD on your cluster. Refer to [ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/) for more details.
 
 ```
 kubectl create namespace argocd
@@ -159,15 +159,15 @@ kubectl port-forward svc/argocd-server -n argocd 9080:443
 argocd admin initial-password -n argocd
 ```
 
-* Argo admin UI: https://localhost:9080/applications (user: admin)
+- Argo admin UI: https://localhost:9080/applications (user: admin)
 
 ![Argo admin UI (empty)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/main/img/argo_staging_empty.png)
 
 ### Create ArgoCD applications and deploy Tyk Self-Managed
 
-* Clone this repository locally
-* Replace ```YOUR-LICENSE-GOES-HERE``` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self. 
-* Start by deploying the dependencies (configuration, Redis, PostgreSQL):
+- Clone this repository locally
+- Replace `YOUR-LICENSE-GOES-HERE` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self.
+- Start by deploying the dependencies (configuration, Redis, PostgreSQL):
 
 ```
 cd ./production/argo-applications-tyk
@@ -186,7 +186,7 @@ kubectl apply -f tyk-stack.yml
 
 ### Try it out
 
-Port forward Tyk Gateway: 
+Port forward Tyk Gateway:
 
 ```
 kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
@@ -202,13 +202,12 @@ kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
 
 Log into Tyk Dashboard: http://localhost:3000 (default@example.com / 123456 if you haven't changed the default from the Helm chart).
 
+## Contributions welcome
 
-## Contributions welcome 
-
-1. [Contribution guidelines](./CONTRIBUTING.md) 
+1. [Contribution guidelines](./CONTRIBUTING.md)
 2. [PR template](./.github/pull_request_template.md)
 3. [Bug report template](./.github/ISSUE_TEMPLATE/bug_report.md)
-4. [Feature request template](./.github/ISSUE_TEMPLATE/feature_request.md) 
+4. [Feature request template](./.github/ISSUE_TEMPLATE/feature_request.md)
 5. [Contributor License Agreement](https://github.com/TykTechnologies/tyk/blob/master/CLA.md) - This will enforce your contributors to sign the CLA on the first time they submit a PR.
-6. [License](./LICENSE)  *from tyk-gateway*
+6. [License](./LICENSE) _from tyk-gateway_
 7. [Default Repo README](./.github/README-template.md), which resides in `/.github`
