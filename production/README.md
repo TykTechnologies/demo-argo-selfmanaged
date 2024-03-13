@@ -33,13 +33,24 @@ argocd admin initial-password -n argocd
 
 ![Argo admin UI (empty)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/main/img/argo_staging_empty.png)
 
-## Create ArgoCD applications for OTel collector and Jaeger
+## Deploy Cert Manager
 
 * Clone this repository locally
 * Run the following commands:
 
 ```
-cd ./production/argo-applications-observability
+cd ./production/argo-cert-manager
+kubectl apply -f ./application-cert-manager.yaml
+```
+
+## Create ArgoCD applications for OTel collector and Jaeger
+
+
+* Run the following commands:
+
+```
+cd ..
+cd ./argo-applications-observability
 kubectl apply -f ./application-opentelemetry-collector.yaml
 kubectl apply -f ./application-jaeger-operator.yaml
 kubectl apply -f ./application-jaeger-conf.yaml
