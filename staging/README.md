@@ -33,14 +33,25 @@ argocd admin initial-password -n argocd
 
 ![Argo admin UI (empty)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/main/img/argo_staging_empty.png)
 
-## Create ArgoCD applications and deploy Tyk Self-Managed
+## Create ArgoCD applications for OTel collector and Jaeger
 
 * Clone this repository locally
+
+```
+cd ./staging/argo-applications-observability
+kubectl apply -f tyk-config-secrets.yml
+```
+
+
+## Create ArgoCD applications and deploy Tyk Self-Managed
+
+
 * Replace ```YOUR-LICENSE-GOES-HERE``` with your Tyk self-managed license in ./staging/argo-applications-tyk/tyk-stack.yml. You can register for a free trial: https://tyk.io/sign-up/#self. 
 * Start by deploying the dependencies (configuration, Redis, PostgreSQL):
 
 ```
-cd ./staging/argo-applications-tyk
+cd ..
+cd ./argo-applications-tyk
 kubectl apply -f tyk-config-secrets.yml
 kubectl apply -f tyk-redis.yml
 kubectl apply -f tyk-postgres.yml
