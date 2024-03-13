@@ -11,7 +11,7 @@ data:
           grpc:
     processors:
       batch:
-      resource/env
+      resource/env:
         attributes:
         - key: env
           value: staging
