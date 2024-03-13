@@ -12,7 +12,7 @@ data:
     processors:
       batch:
       resource/env
-        actions:
+        attributes:
         - key: env
           value: staging
           action: insert
