@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://github.com/SonjaChevre/demo-apiops-observability.git'
     path: staging/opentelemetry-collector
-    targetRevision: HEAD
+    targetRevision: add-otel-jaeger
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
