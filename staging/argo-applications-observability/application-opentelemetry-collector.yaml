@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: 'https://github.com/SonjaChevre/demo-apiops-observability.git'
+    repoURL: 'https://github.com/TykTechnologies/demo-argo-selfmanaged.git'
     path: staging/opentelemetry-collector
     targetRevision: add-otel-jaeger
   syncPolicy:
