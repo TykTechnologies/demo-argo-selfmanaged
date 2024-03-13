@@ -36,6 +36,7 @@ argocd admin initial-password -n argocd
 ## Create ArgoCD applications for OTel collector and Jaeger
 
 * Clone this repository locally
+* Run the following commands:
 
 ```
 cd ./staging/argo-applications-observability
