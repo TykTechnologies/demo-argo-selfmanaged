@@ -39,7 +39,9 @@ argocd admin initial-password -n argocd
 
 ```
 cd ./staging/argo-applications-observability
-kubectl apply -f tyk-config-secrets.yml
+kubectl apply -f ./application-opentelemetry-collector.yaml
+kubectl apply -f ./application-jaeger-operator.yaml
+kubectl apply -f ./application-jaeger-conf.yaml
 ```
 
 
@@ -65,24 +67,6 @@ kubectl apply -f tyk-stack.yml
 
 ![Argo admin UI (Tyk Self-Managed deployed)](https://github.com/TykTechnologies/demo-argo-selfmanaged/blob/main/img/argo_staging_tyk_stack.png)
 
-### Try it out
-
-Port forward Tyk Gateway: 
-
-```
-kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
-```
-
-Check that it is healthy by sending a request to the health endpoint: http://localhost:8080/hello.
-
-Port forward Tyk Dashboard:
-
-```
-kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
-```
-
-Log into Tyk Dashboard: http://localhost:3000 (default@example.com / 123456 if you haven't changed the default from the Helm chart).
-
 ## Deploy Tyk Operator 
 
 Configure an Argo CD application to deploy Tyk Operator and Cert Manager. Tyk Operator enables the management of Tyk API Gateway within Kubernetes, and Cert Manager handles SSL/TLS for secure communication. 
@@ -100,8 +84,37 @@ API Definitions are going to be stored into the direction ./api-definitions. Let
 kubectl apply -f application-api-definitions.yaml
 ```
 
-### Try it out
+## Try it out
+
+### Tyk Gateway
+
+Forward the port 8080:
 
 ```
-http://localhost:8080/httpbin/get
+kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
 ```
+
+* Tyk health endpoint: http://localhost:8080/hello
+* go-httpbin: http://localhost:8080/httpbin/get
+
+### Tyk Dashboard
+
+Forward the port 8080:
+
+```
+kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
+```
+
+* Tyk Dashboard: http://localhost:3000
+* Credentials: default@example.com / 123456 if you haven't changed the default from the Helm chart
+
+
+### Jaeger
+
+Forward the port 16686:
+
+```
+kubectl port-forward svc/jaeger-all-in-one-query -n observability 16686:16686
+```
+
+* Jaeger: http://localhost:16686
