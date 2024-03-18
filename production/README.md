@@ -82,10 +82,9 @@ kubectl apply -f tyk-stack.yml
 
 ## Deploy Tyk Operator 
 
-Configure an Argo CD application to deploy Tyk Operator and Cert Manager. Tyk Operator enables the management of Tyk API Gateway within Kubernetes, and Cert Manager handles SSL/TLS for secure communication. 
+Configure an Argo CD application to deploy Tyk Operator. Tyk Operator enables the management of Tyk API Gateway within Kubernetes.
 
 ```
-kubectl apply -f application-cert-manager.yaml
 kubectl apply -f application-tyk-operator.yaml
 ```
 
