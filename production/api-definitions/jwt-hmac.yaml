@@ -16,7 +16,7 @@ spec:
   jwt_identity_base_field: sub
   jwt_policy_field_name: pol
   jwt_default_policies:
-    - replace_namespace/jwt-hmac
+    - tyk/jwt-hmac
 ---
 apiVersion: tyk.tyk.io/v1alpha1
 kind: SecurityPolicy
@@ -31,6 +31,6 @@ spec:
     rate_limit: true
   access_rights_array:
     - name: jwt-hmac
-      namespace: replace_namespace
+      namespace: tyk
       versions:
         - Default
