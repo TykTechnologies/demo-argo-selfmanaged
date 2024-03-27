@@ -97,7 +97,7 @@ kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
 
 ### Tyk Dashboard
 
-Forward the port 8080:
+Forward the port 3000:
 
 ```
 kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
