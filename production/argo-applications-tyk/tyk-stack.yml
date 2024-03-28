@@ -31,12 +31,6 @@ spec:
           value: 'true'
         - name: tyk-bootstrap.bootstrap.portal
           value: 'false'
-        - name: tyk-gateway.gateway.opentelemetry.enabled
-          value: 'true'
-        - name: tyk-gateway.gateway.opentelemetry.endpoint
-          value: 'opentelemetry-collector.observability.svc:4317'
-        - name: tyk-gateway.gateway.opentelemetry.exporter
-          value: 'grpc'
     chart: tyk-stack
   destination:
     server: 'https://kubernetes.default.svc'
