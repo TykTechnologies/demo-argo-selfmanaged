@@ -43,6 +43,20 @@ cd ./production/argo-cert-manager
 kubectl apply -f ./application-cert-manager.yaml
 ```
 
+## Create ArgoCD applications for OTel collector and Jaeger
+
+
+* Run the following commands:
+
+```
+cd ..
+cd ./argo-applications-observability
+kubectl apply -f ./application-opentelemetry-collector.yaml
+kubectl apply -f ./application-jaeger-operator.yaml
+kubectl apply -f ./application-jaeger-conf.yaml
+```
+
+
 ## Create ArgoCD applications and deploy Tyk Self-Managed
 
 * Clone this repository locally
@@ -93,11 +107,11 @@ kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
 ```
 
 * Tyk health endpoint: http://localhost:8080/hello
-* go-httpbin: http://localhost:8080/httpbin/get  (requires authentication)
+* go-httpbin: http://localhost:8080/httpbin/get
 
 ### Tyk Dashboard
 
-Forward the port 3000:
+Forward the port 8080:
 
 ```
 kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
@@ -105,3 +119,14 @@ kubectl port-forward svc/dashboard-svc-tyk-stack-tyk-dashboard 3000:3000 -n tyk
 
 * Tyk Dashboard: http://localhost:3000
 * Credentials: default@example.com / 123456 if you haven't changed the default from the Helm chart
+
+
+### Jaeger
+
+Forward the port 16686:
+
+```
+kubectl port-forward svc/jaeger-all-in-one-query -n observability 16686:16686
+```
+
+* Jaeger: http://localhost:16686
