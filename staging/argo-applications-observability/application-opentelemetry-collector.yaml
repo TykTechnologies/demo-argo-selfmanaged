@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://github.com/TykTechnologies/demo-argo-selfmanaged.git'
     path: staging/opentelemetry-collector
-    targetRevision: add-otel-jaeger
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
