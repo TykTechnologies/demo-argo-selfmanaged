@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://github.com/TykTechnologies/demo-argo-selfmanaged.git'
     path: staging/api-definitions
-    targetRevision: HEAD
+    targetRevision: add-otel-jaeger
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
