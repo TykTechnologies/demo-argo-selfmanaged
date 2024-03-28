@@ -107,7 +107,7 @@ kubectl port-forward svc/gateway-svc-tyk-stack-tyk-gateway 8080:8080 -n tyk
 ```
 
 * Tyk health endpoint: http://localhost:8080/hello
-* go-httpbin: http://localhost:8080/httpbin/get
+* go-httpbin: http://localhost:8080/httpbin/get (requires authentication)
 
 ### Tyk Dashboard
 
