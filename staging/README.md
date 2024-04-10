@@ -57,6 +57,14 @@ kubectl apply -f ./application-jaeger-operator.yaml
 kubectl apply -f ./application-jaeger-conf.yaml
 ```
 
+## Create ArgoCD applications for the demo services
+
+```
+cd ..
+cd ./argo-applications-services
+kubectl apply -f ./application-services.yaml
+```
+
 
 ## Create ArgoCD applications and deploy Tyk Self-Managed
 
