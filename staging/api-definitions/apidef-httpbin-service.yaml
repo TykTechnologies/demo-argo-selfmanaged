@@ -9,6 +9,6 @@ spec:
   use_keyless: true
   detailed_tracing: true
   proxy:
-    target_url: http://go-httpbin-service.go-httpbin.svc.cluster.local
+    target_url: http://go-httpbin-service.services.svc.cluster.local
     listen_path: /httpbin-go
     strip_listen_path: true
