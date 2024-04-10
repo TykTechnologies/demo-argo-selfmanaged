@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/TykTechnologies/demo-argo-selfmanaged.git'
-    path: production/services
+    path: staging/services
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
