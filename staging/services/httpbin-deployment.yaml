@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: go-httpbin
-        image: mccutchen/go-httpbin
+        image: mccutchen/go-httpbin:v2.9.0
         ports:
         - containerPort: 8080
 ---
