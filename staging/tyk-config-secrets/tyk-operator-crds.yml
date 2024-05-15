@@ -5,7 +5,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: tyk-operator-controller-manager
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 ---
 # Source: tyk-operator/templates/all.yaml
 apiVersion: v1
@@ -25,7 +25,7 @@ data:
 kind: ConfigMap
 metadata:
   name: tyk-operator-manager-config
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 ---
 # Source: tyk-operator/templates/all.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -341,7 +341,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: tyk-operator-controller-manager
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 ---
 # Source: tyk-operator/templates/all.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -355,14 +355,14 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: tyk-operator-controller-manager
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 ---
 # Source: tyk-operator/templates/all.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: tyk-operator-leader-election-role
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 rules:
 - apiGroups:
   - ""
@@ -401,7 +401,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tyk-operator-leader-election-rolebinding
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -409,7 +409,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: tyk-operator-controller-manager
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 ---
 # Source: tyk-operator/templates/all.yaml
 apiVersion: v1
@@ -418,7 +418,7 @@ metadata:
   labels:
     control-plane: tyk-operator-controller-manager
   name: tyk-operator-controller-manager-metrics-service
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 spec:
   ports:
   - name: https
@@ -432,7 +432,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tyk-operator-webhook-service
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 spec:
   ports:
   - port: 443
@@ -447,7 +447,7 @@ metadata:
   labels:
     control-plane: tyk-operator-controller-manager
   name: tyk-operator-controller-manager
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 spec:
   replicas: 1
   selector:
@@ -529,11 +529,11 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: tyk-operator-serving-cert
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 spec:
   dnsNames:
-  - tyk-operator-webhook-service.tyk-operator-system.svc
-  - tyk-operator-webhook-service.tyk-operator-system.svc.cluster.local
+  - tyk-operator-webhook-service.tyk-operator.svc
+  - tyk-operator-webhook-service.tyk-operator.svc.cluster.local
   issuerRef:
     kind: Issuer
     name: tyk-operator-selfsigned-issuer
@@ -544,7 +544,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: tyk-operator-selfsigned-issuer
-  namespace: tyk-operator-system
+  namespace: tyk-operator
 spec:
   selfSigned: {}
 ---
@@ -554,7 +554,7 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: tyk-operator-system/tyk-operator-serving-cert
+    cert-manager.io/inject-ca-from: tyk-operator/tyk-operator-serving-cert
   name: tyk-operator-mutating-webhook-configuration
 webhooks:
 - admissionReviewVersions:
@@ -563,7 +563,7 @@ webhooks:
   clientConfig:
     service:
       name: tyk-operator-webhook-service
-      namespace: tyk-operator-system
+      namespace: tyk-operator
       path: /mutate-tyk-tyk-io-v1alpha1-apidefinition
   failurePolicy: Fail
   name: mapidefinition.kb.io
@@ -584,7 +584,7 @@ webhooks:
   clientConfig:
     service:
       name: tyk-operator-webhook-service
-      namespace: tyk-operator-system
+      namespace: tyk-operator
       path: /mutate-tyk-tyk-io-v1alpha1-securitypolicy
   failurePolicy: Fail
   name: msecuritypolicy.kb.io
@@ -605,7 +605,7 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: tyk-operator-system/tyk-operator-serving-cert
+    cert-manager.io/inject-ca-from: tyk-operator/tyk-operator-serving-cert
   name: tyk-operator-validating-webhook-configuration
 webhooks:
 - admissionReviewVersions:
@@ -614,7 +614,7 @@ webhooks:
   clientConfig:
     service:
       name: tyk-operator-webhook-service
-      namespace: tyk-operator-system
+      namespace: tyk-operator
       path: /validate-tyk-tyk-io-v1alpha1-apidefinition
   failurePolicy: Fail
   name: vapidefinition.kb.io
@@ -635,7 +635,7 @@ webhooks:
   clientConfig:
     service:
       name: tyk-operator-webhook-service
-      namespace: tyk-operator-system
+      namespace: tyk-operator
       path: /validate-tyk-tyk-io-v1alpha1-securitypolicy
   failurePolicy: Fail
   name: vsecuritypolicy.kb.io
