@@ -532,8 +532,8 @@ metadata:
   namespace: tyk
 spec:
   dnsNames:
-  - tyk-operator-webhook-service.tyk-operator.svc
-  - tyk-operator-webhook-service.tyk-operator.svc.cluster.local
+  - tyk-operator-webhook-service.tyk.svc
+  - tyk-operator-webhook-service.tyk.svc.cluster.local
   issuerRef:
     kind: Issuer
     name: tyk-operator-selfsigned-issuer
@@ -554,7 +554,7 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: tyk-operator/tyk-operator-serving-cert
+    cert-manager.io/inject-ca-from: tyk/tyk-operator-serving-cert
   name: tyk-operator-mutating-webhook-configuration
 webhooks:
 - admissionReviewVersions:
@@ -605,7 +605,7 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: tyk-operator/tyk-operator-serving-cert
+    cert-manager.io/inject-ca-from: tyk/tyk-operator-serving-cert
   name: tyk-operator-validating-webhook-configuration
 webhooks:
 - admissionReviewVersions:
