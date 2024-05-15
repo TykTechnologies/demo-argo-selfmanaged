@@ -549,6 +549,7 @@ spec:
   selfSigned: {}
 ---
 # Source: tyk-operator/templates/all.yaml
+---
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
@@ -598,26 +599,6 @@ webhooks:
     resources:
     - securitypolicies
   sideEffects: None
----
-# Source: tyk-operator/templates/all.yaml
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    control-plane: tyk-operator-controller-manager
-  name: tyk-operator-controller-manager-metrics-monitor
-  namespace: tyk-operator-system
-spec:
-  endpoints:
-  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-    path: /metrics
-    port: https
-    scheme: https
-    tlsConfig:
-      insecureSkipVerify: true
-  selector:
-    matchLabels:
-      control-plane: tyk-operator-controller-manager
 ---
 # Source: tyk-operator/templates/all.yaml
 apiVersion: admissionregistration.k8s.io/v1
