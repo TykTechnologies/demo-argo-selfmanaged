@@ -8,6 +8,14 @@ spec:
   source:
     repoURL: 'https://helm.tyk.io/public/helm/charts/'
     targetRevision: 0.16.0
+    helm:
+      parameters:
+        - name: image.repository
+          value: caroltyk/tyk-operator
+        - name: image.tag
+          value: test
+        - name: image.pullPolicy
+          value: Always
     chart: tyk-operator
   destination:
     server: 'https://kubernetes.default.svc'
