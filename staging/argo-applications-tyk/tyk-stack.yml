@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://helm.tyk.io/public/helm/charts/'
-    targetRevision: 1.0.0
+    targetRevision: 1.4.0
     helm:
       parameters:
         - name: global.license.dashboard
