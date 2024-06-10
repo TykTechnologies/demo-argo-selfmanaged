@@ -15,7 +15,7 @@ spec:
   use_standard_auth: true
   auth_configs:
     authToken:
-      auth_header_name: X-Authorization
+      auth_header_name: Authorization
 
 ---
 apiVersion: tyk.tyk.io/v1alpha1
